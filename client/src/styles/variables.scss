@@ -5,21 +5,16 @@
 
 $color-default-black:               #000000;
 $color-default-white:               #ffffff;
-$color-default-white-20:            #ffffff20;
 $color-transparent:                 rgba(255, 255, 255, 0);
+
+$color-medium-orchid:               #cb3cff;
+$color-black-russian:               #081028;
 
 // Project palette
 // для нейминга цветов используем https://www.htmlcsscolor.com/hex/334482
-$color-night-rider-70: #35353570;
-$color-tide: #c5b9ae;
-$color-dorado: #6c6a69;
-$color-sandy-brown: #efa359;
-$color-sandy-brown-2: #efa35a;
-$color-sazerac: #f5dcc2;
-$color-white-70: #ffffff70;
 
 // Gradient
-
+$graient: linear-gradient(135deg, #cb3cff 19.86%, #7f25fb 68.34%);
 
 // Typography
 // ---------------------------------
@@ -32,7 +27,7 @@ $fz-default:                        10px;
 $ff-rouble:                         "Rouble", "Arial", sans-serif;
 
 $ff-second:                      "Geometria", "Arial", sans-serif;
-$ff-default:                     "Roboto", "Arial", sans-serif;
+$ff-default:                     "MonaSans", "Arial", sans-serif;
 
 // Animation
 // ---------------------------------

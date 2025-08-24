@@ -1,0 +1,13 @@
+@use '../../styles/variables.scss' as *;
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  background-color: $color-black-russian;
+  height: 100vh;
+  border-radius: 2rem;
+}
+
+.layout__main {
+  display: flex;
+}

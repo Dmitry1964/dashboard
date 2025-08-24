@@ -3,9 +3,9 @@
 .container {
   width: 100%;
   min-height: 100%;
-  max-width: 1680px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 0 8rem;
+  padding: 0 4rem;
 
   @include mixins.vp-1679 {
     padding: 0 6rem;
