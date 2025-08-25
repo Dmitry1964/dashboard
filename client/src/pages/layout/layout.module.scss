@@ -9,5 +9,6 @@
 }
 
 .layout__main {
-  display: flex;
+  display: grid;
+  grid-template-columns: 300px 1fr;
 }
