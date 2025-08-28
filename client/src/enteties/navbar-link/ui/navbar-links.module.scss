@@ -42,8 +42,30 @@
 
 .navbar_links__btn {
   border: none;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  position: relative;
+  margin-right: 10px;
+  transition: transform 0.35s ease;
+
+
+    &::before {
+      content: '>';
+      position: absolute;
+      top: -3px;
+      left: calc(50% - 2px);
+      color: white;
+      font-size: 2rem;
+      font-weight: 400;
+    }
+
 }
 
 .active {
   color: $color-medium-orchid;
+}
+
+.open {
+  transform: rotate(90deg);
 }
