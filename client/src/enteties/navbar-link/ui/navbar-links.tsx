@@ -1,33 +1,38 @@
-import { NavLink } from 'react-router-dom';
-import cls from './navbar-link.module.scss';
+import { NavLink } from "react-router-dom";
+import cls from "./navbar-links.module.scss";
+// import { type MouseEvent } from "react";
 
 type NavbarLinksProps = {
   name: string;
-  links?: {title: string, href: string}[],
-  imgUrl: string
-}
+  pageHref: string;
+  links?: { title: string; href: string }[];
+  icon: React.ReactNode;
+};
 
-const NavbarLinks = ({ name, links, imgUrl }: NavbarLinksProps) => {
+const NavbarLinks = ({ name, links, icon, pageHref }: NavbarLinksProps) => {
+
+// const handleLink = (evt: MouseEvent<HTMLAnchorElement>) => {
+//   evt.preventDefault();
+// }
+
   return (
     <div className={cls.navbar_links}>
-      <img className={cls.navbar_links__img} src={imgUrl} alt={`Иконка ${name}`} />
-      {links && !links.length && <span className={cls.navbar_links__title}>{name}</span>}
-      {
-        links && links.length && 
+      <NavLink to={pageHref} className={({isActive}) => [cls.navbar_links__head, isActive ? cls.active : " "].join(' ')}>
+        {icon}
+        <h2 className={cls.navbar_links__title}>{name}</h2>
+      </NavLink>
+      <button className={cls.navbar_links__btn}></button>
+      {links?.length ? (
         <ul className={cls.navbar_links__list}>
-          <span className={cls.navbar_links__title}>{name}</span>
-          {
-            links.map((link) => (
-              <li className={cls.navbar_links__item} key={link.title}>
-                <NavLink to={link.href}>{link.title}</NavLink>
-              </li>
-            ))
-          }
+          {links.map((link) => (
+            <li key={link.title}>
+              <NavLink to={link.href}>{link.title}</NavLink>
+            </li>
+          ))}
         </ul>
-      }
-      <button className={cls.navbar_links__btm}></button>
+      ) : null}
     </div>
-  )
-}
+  );
+};
 
-export default NavbarLinks
+export default NavbarLinks;

@@ -1,1 +1,49 @@
- 
+@use '../../../styles/variables.scss' as *;
+
+.navbar_links {
+  display: grid;
+  grid-template-columns:1fr auto;
+  grid-template-rows: repeat(2, auto);
+  align-items: center;
+  padding: 14px 0;
+  width: 100%;
+  border-radius: 5px;
+  transition: background-color 0.35s ease;
+
+  &:hover {
+    background-color: $color-midnight-express;
+  }
+}
+
+.navbar_links__head {
+  display: flex;
+  column-gap: 6px;
+  color: $color-perano;
+  transition: color 0.35s ease;
+    }
+.navbar_links__list {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: none;
+}
+
+.navbar_links__title {
+   font-size: 1.4rem;
+   font-weight: 500;
+   line-height: 100%;
+   width: 100%;
+   margin: 0;
+}
+
+.navbar_links__btn {
+  border: none;
+}
+
+.active {
+  color: $color-medium-orchid;
+}

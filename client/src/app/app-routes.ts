@@ -1,6 +1,7 @@
 export enum AppRouter {
   Main = '/',
-  Login = '/login',
-  Register = '/register',
+  User = '/user',
+  Login = 'user/login',
+  Register = 'user/register',
   userInfo = '/user-info'
 }

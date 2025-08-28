@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import './app-routes'
 import { AppRouter } from "./app-routes";
 import Layout from "src/pages/layout/layout";
+import UserPage from "src/pages/user-page/ui/user-page";
 
 
 function App() {
@@ -13,7 +14,13 @@ function App() {
         <>
           <Layout />
         </>
-      )
+      ),
+      children: [
+        {
+          path: AppRouter.User,
+          element: <UserPage/>
+        }
+      ]
     }
   ])
 

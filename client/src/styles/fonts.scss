@@ -7,8 +7,8 @@
 
     font-display: swap;
     src:
-      url("/fonts/MonaSans-Regular.woff2") format("woff2"),
-      url("/fonts/MonaSans-Regular.woff") format("woff");
+      url("/fonts/Roboto-Regular.woff2") format("woff2"),
+      url("/fonts/Roboto-Regular.woff") format("woff");
   }
 
   @font-face {
@@ -18,8 +18,8 @@
 
     font-display: swap;
     src:
-      url("/fonts/MonaSans-Medium.woff2") format("woff2"),
-      url("/fonts/MonaSans-Medium.woff") format("woff");
+      url("/fonts/Roboto-Medium.woff2") format("woff2"),
+      url("/fonts/Roboto-Medium.woff") format("woff");
   }
 
   @font-face {
@@ -35,35 +35,3 @@
 
   // second font
 
-  @font-face {
-    font-style: normal;
-    font-weight: 400;
-    font-family: "Geometria";
-
-    font-display: swap;
-    src:
-      url("/fonts/Geometria-Regular.woff2") format("woff2"),
-      url("/fonts/Geometria-Regular.woff") format("woff");
-  }
-
-  @font-face {
-    font-style: normal;
-    font-weight: 500;
-    font-family: "Geometria";
-
-    font-display: swap;
-    src:
-      url("/fonts/Geometria-Medium.woff2") format("woff2"),
-      url("/fonts/Geometria-Medium.woff") format("woff");
-  }
-
-  @font-face {
-    font-style: normal;
-    font-weight: 800;
-    font-family: "Geometria";
-
-    font-display: swap;
-    src:
-      url("/fonts/Geometria-ExtraBold.woff2") format("woff2"),
-      url("/fonts/Geometria-ExtraBold.woff") format("woff");
-  }
