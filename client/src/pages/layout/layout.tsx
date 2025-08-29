@@ -1,19 +1,24 @@
 import cls from './layout.module.scss';
 import { Navbar } from 'src/widgest/navbar';
 import { Outlet } from 'react-router-dom';
+import { Header } from 'src/widgest/header';
+import { RootState } from 'src/store/store';
+import { useSelector } from 'react-redux';
+import { getHeaderTitle } from 'src/shared/service';
 
 const Layout = () => {
+
+  const  path = useSelector((state : RootState) => state.location.pathName);
+
+  const title =  getHeaderTitle(path)
 
   return (
     <div className={cls.layout}>
       <main className={cls.layout__main}>
         <Navbar />
         <section className={cls.layout__wrapper}>
-        <div className={cls.layout__header}>
-          <p  className={cls.layout__header_title}>Analytics</p>
-          <button className={cls.layout__header_btn}>Date</button>
-        </div>
-        <Outlet />
+          <Header title={title} />
+          <Outlet />
         </section>
       </main>
     </div>

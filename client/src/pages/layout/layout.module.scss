@@ -13,26 +13,3 @@
   grid-template-columns: 300px 1fr;
 }
 
-.layout__header {
-  display: flex;
-  justify-content: space-between;
-  padding: 40px;
-}
-
-.layout__header_title {
-  font-size: 2rem;
-  line-height: 2.2rem;
-  font-weight: 500;
-  margin: 0;
-}
-
-.layout__header_btn {
-  font-size: 1.2rem;
-  line-height: 1.4rem;
-  color: $color-default-white;
-  width: 92px;
-  height: 30px;
-  border: none;
-  border-radius: 4px;
-  background-color: $color-medium-orchid;
-}
