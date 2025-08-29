@@ -1,23 +1,10 @@
 import cls from "./navbar.module.scss";
 import { NavbarLinks } from "src/enteties/navbar-link";
-import { NavbarLinksType } from "src/app/app-types";
 import { AppRouter } from "src/app/app-routes";
 import { NavLink } from "react-router-dom";
 import { UserIcon } from "src/enteties/user-icon";
+import { userLinks } from "src/app/app-constans";
 
-const userLinks: NavbarLinksType = {
-  name: "Пользователь",
-  links: [
-    {
-      title: "Регистрация",
-      href: AppRouter.Register,
-    },
-    {
-      title: "Войти",
-      href: AppRouter.Login,
-    },
-  ],
-};
 
 const Navbar = () => {
   return (

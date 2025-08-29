@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
+import cls from './main-page.module.scss';
 import { useDispatch } from 'react-redux';
-import cls from './user-page.module.scss';
 import { changeLocation } from 'src/slicies/location-slice/location-slice';
-const UserPage = () => {
+
+const MainPage = () => {
 
   const dispatch = useDispatch();
 
@@ -11,13 +12,12 @@ const UserPage = () => {
     dispatch(changeLocation(pathhName));
 
   },[dispatch]);
-  
-  return (
-    <section className={cls.user_page}>
 
-      <h2 className={cls.user_page__title}>Это юзер зфпу</h2>
+  return (
+    <section className={cls.main_page}>
+      Это главная страница
     </section>
   )
 }
 
-export default UserPage;
+export default MainPage;

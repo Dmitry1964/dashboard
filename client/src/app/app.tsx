@@ -3,6 +3,7 @@ import './app-routes'
 import { AppRouter } from "./app-routes";
 import Layout from "src/pages/layout/layout";
 import UserPage from "src/pages/user-page/ui/user-page";
+import MainPage from "src/pages/main-page/ui/main-page";
 
 function App() {
 
@@ -18,6 +19,10 @@ function App() {
         {
           path: AppRouter.User,
           element: <UserPage/>
+        },
+        {
+          path: AppRouter.Main,
+          element: <MainPage />
         }
       ]
     }

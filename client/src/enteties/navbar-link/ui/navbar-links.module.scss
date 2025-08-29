@@ -29,6 +29,10 @@
   margin: 0;
   padding: 0;
   list-style: none;
+  transform: scaleY(0);
+  height: 0;
+  transition: transform 0.35s ease;
+  transform-origin: 0 top;
 }
 
 .navbar_links__item {
@@ -42,6 +46,11 @@
 .navbar_links__link {
   font-size: 1.4rem;
   color: $color-perano ;
+  transition: color 0.35s ease;
+
+  &:hover {
+    color: $color-default-white;
+  }
 }
 
 
@@ -82,4 +91,9 @@
 .active_link {
   transform: rotate(90deg);
   color: red;
+}
+
+.open_list {
+  height: auto;
+  transform: scaleY(1);
 }

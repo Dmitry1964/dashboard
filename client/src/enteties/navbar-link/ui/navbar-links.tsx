@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom";
 import cls from "./navbar-links.module.scss";
+import { useSelector } from "react-redux";
+import { RootState } from "src/store/store";
 
 type NavbarLinksProps = {
   name: string;
@@ -10,15 +12,18 @@ type NavbarLinksProps = {
 
 const NavbarLinks = ({ name, links, icon, pageHref }: NavbarLinksProps) => {
 
+  const location = useSelector((state : RootState) => state.location.pathName);
+  const isOpen = location === pageHref;
+  
   return (
-    <div className={cls.navbar_links}>
+    <div className={cls.navbar_links}> 
       <NavLink to={pageHref} className={({isActive}) => [cls.navbar_links__head, isActive ? cls.active : " "].join(' ')}>
         {icon}
         <h2 className={cls.navbar_links__title}>{name}</h2>
       </NavLink>
       <NavLink to={pageHref} className={({isActive}) => [cls.navbar_links__btn, isActive ? cls.active_link : " "].join(' ')}></NavLink>
       {links?.length ? (
-        <ul className={cls.navbar_links__list}>
+        <ul className={[cls.navbar_links__list, isOpen ? cls.open_list : " "].join(' ')}>
           {links.map((link) => (
             <li className={cls.navbar_links__item} key={link.title}>
               <NavLink className={cls.navbar_links__link} to={link.href}>{link.title}</NavLink>
