@@ -29,8 +29,21 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  display: none;
 }
+
+.navbar_links__item {
+  display: flex;
+  align-items: center;
+  height: 42px;
+  padding-left: 15px;
+
+}
+
+.navbar_links__link {
+  font-size: 1.4rem;
+  color: $color-perano ;
+}
+
 
 .navbar_links__title {
    font-size: 1.4rem;
@@ -66,6 +79,7 @@
   color: $color-medium-orchid;
 }
 
-.open {
+.active_link {
   transform: rotate(90deg);
+  color: red;
 }

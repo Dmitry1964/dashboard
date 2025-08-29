@@ -16,12 +16,12 @@ const NavbarLinks = ({ name, links, icon, pageHref }: NavbarLinksProps) => {
         {icon}
         <h2 className={cls.navbar_links__title}>{name}</h2>
       </NavLink>
-      <NavLink to={pageHref} className={({isActive}) => [cls.navbar_links__btn, isActive ? cls.open : " "].join(' ')}></NavLink>
+      <NavLink to={pageHref} className={({isActive}) => [cls.navbar_links__btn, isActive ? cls.active_link : " "].join(' ')}></NavLink>
       {links?.length ? (
         <ul className={cls.navbar_links__list}>
           {links.map((link) => (
-            <li key={link.title}>
-              <NavLink to={link.href}>{link.title}</NavLink>
+            <li className={cls.navbar_links__item} key={link.title}>
+              <NavLink className={cls.navbar_links__link} to={link.href}>{link.title}</NavLink>
             </li>
           ))}
         </ul>

@@ -4,7 +4,6 @@ import { AppRouter } from "./app-routes";
 import Layout from "src/pages/layout/layout";
 import UserPage from "src/pages/user-page/ui/user-page";
 
-
 function App() {
 
   const router = createBrowserRouter([
