@@ -1,0 +1,73 @@
+@use '../../../styles/variables.scss' as *;
+
+.add_user {
+  border: 1px solid $color-cloud-burst;
+  border-radius: 10px;
+  padding: 15px;
+  width: 60%;
+  background-color: $color-midnight-express;
+}
+
+.add_user__title {
+  font-size: 1.6rem;
+  line-height: 1.8rem;
+  font-weight: 500;
+  margin: 25px;
+}
+
+.add_user__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid $color-cloud-burst;
+  border-radius: 10px;
+}
+
+.add_user__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+
+  & label {
+    flex-grow: 1;
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+  }
+}
+
+.add_user__input {
+  width: 370px;
+  height: 42px;
+  padding: 0 20px;
+  align-self: flex-end;
+  border: 1px solid $color-cloud-burst;
+  border-radius: 10px;
+  background: transparent;
+  color: $color-default-white;
+}
+
+.add_user__photo_user {
+  border-radius: 50%;
+}
+
+.add_user__textarea {
+  width: 370px;
+  height: 100px;
+  border: 1px solid $color-cloud-burst;
+  padding: 5px 20px;
+  border-radius: 10px;
+  background: transparent;
+  color: $color-default-white;
+}
+
+.add_user__button {
+  width: 200px;
+  height: 50px;
+  margin-top: 25px;
+  border: none;
+  border-radius: 10px;
+  background: $graient;
+  font-size: 1.6rem;
+  color: $color-default-white;
+  cursor: pointer;
+}

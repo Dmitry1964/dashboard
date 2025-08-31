@@ -3,7 +3,8 @@ import { NavbarLinksType } from "./app-types";
 
 export enum NavbarLinks {
   Users = 'Пользователи',
-  Main = 'Главная'
+  Main = 'Главная',
+  UserRegister = 'Регистрация нового пользователя'
 }
 
 export const userLinks: NavbarLinksType = {
