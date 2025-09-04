@@ -5,7 +5,10 @@ export type NavbarLinksType = {
 }
 
 export type User = {
-  name: string;
   email: string;
   password: string;
+  firstName: string;
+  lastName: string;
+  phone: string;
+  position: string;
 }
