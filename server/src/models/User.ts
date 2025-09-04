@@ -6,6 +6,8 @@ export interface IUser extends Document {
   password: string;
   firstName: string;
   lastName: string;
+  phone: string;
+  position: string;
   role: 'user' | 'admin';
   isActive: boolean;
   createdAt: Date;
@@ -43,6 +45,17 @@ const userSchema = new Schema<IUser>({
     type: String,
     enum: ['user', 'admin'],
     default: 'user'
+  },
+  phone: {
+    type: String,
+    trim: true,
+    maxlength: [50, 'Телефон не может быть длиннее 50 символов'],
+    match: [/^\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}$/, 'Неверный формат телефона']
+  },
+  position: {
+    type: String,
+    trim: true,
+    maxlength: [50, 'Должность не может быть длиннее 50 символов']
   },
   isActive: {
     type: Boolean,

@@ -13,7 +13,7 @@ const Navbar = () => {
         <div className={cls.navbar__logo}>
           <NavLink to={AppRouter.Main}>
             <img
-              src="content/svg/logo.svg"
+              src="/content/svg/logo.svg"
               width={148}
               height={28}
               alt="Логотип дашбоард"
@@ -39,7 +39,7 @@ const Navbar = () => {
           name={userLinks.name}
           links={userLinks.links}
           icon = {<UserIcon/>}
-          pageHref={AppRouter.User}
+          pageHref={AppRouter.Auth}
         />
       </div>
     </nav>

@@ -8,8 +8,13 @@ const AddUser = () => {
         <fieldset className={cls.add_user__fields}>
           <div className={cls.add_user__item}>
             <img src="/content/svg/icon-users.svg" width={12} height={12} alt="Пользователь" />
-            <label htmlFor="full-name">Полное имя</label>
-            <input className={cls.add_user__input} id='full-name' type="text" placeholder='Иван Иванов' />
+            <label htmlFor="full-name">Имя</label>
+            <input className={cls.add_user__input} id='first-name' type="text" placeholder='Иван' />
+          </div>
+          <div className={cls.add_user__item}>
+            <img src="/content/svg/icon-users.svg" width={12} height={12} alt="Пользователь" />
+            <label htmlFor="full-name">Фамилия</label>
+            <input className={cls.add_user__input} id='last-name' type="text" placeholder='Иванов' />
           </div>
           <div className={cls.add_user__item}>
             <img src="/content/svg/icon-email.svg" width={12} height={12} alt="" />

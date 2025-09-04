@@ -21,6 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 // Подключаемся к базе данных
 connectDB();
 
+
 // Маршруты
 app.use('/api', routes);
 

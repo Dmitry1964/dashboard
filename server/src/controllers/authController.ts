@@ -12,7 +12,7 @@ const generateToken = (userId: string): string => {
 // Регистрация пользователя
 export const register = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const { email, password, firstName, lastName } = req.body;
+    const { email, password, firstName, lastName, phone, position } = req.body;
     
     // Проверяем, существует ли пользователь с таким email
     const existingUser = await User.findOne({ email });
@@ -25,7 +25,9 @@ export const register = async (req: Request, res: Response, next: NextFunction):
       email,
       password,
       firstName,
-      lastName
+      lastName,
+      phone,
+      position,
     });
     
     // Генерируем токен
@@ -40,7 +42,9 @@ export const register = async (req: Request, res: Response, next: NextFunction):
           email: user.email,
           firstName: user.firstName,
           lastName: user.lastName,
-          role: user.role
+          role: user.role,
+          phone: user.phone,
+          position: user.position,
         },
         token
       }

@@ -18,7 +18,7 @@ function App() {
       ),
       children: [
         {
-          path: AppRouter.User,
+          path: AppRouter.Auth,
           element: <UserPage/>
         },
         {
