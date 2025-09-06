@@ -1,7 +1,7 @@
 export enum AppRouter {
   Main = '/',
-  Auth = '/auth',
+  Auth = 'api/auth',
   Login = '/auth/login',
-  Register = '/auth/register',
+  Register = 'api/auth/register',
   userInfo = '/user-info'
 }

@@ -8,8 +8,8 @@ export interface IUser extends Document {
   lastName: string;
   phone: string;
   position: string;
-  role: 'user' | 'admin';
-  isActive: boolean;
+  // role: 'user' | 'admin';
+  // isActive: boolean;
   createdAt: Date;
   updatedAt: Date;
   comparePassword(candidatePassword: string): Promise<boolean>;
@@ -41,26 +41,26 @@ const userSchema = new Schema<IUser>({
     trim: true,
     maxlength: [50, 'Фамилия не может быть длиннее 50 символов']
   },
-  role: {
-    type: String,
-    enum: ['user', 'admin'],
-    default: 'user'
-  },
+  // role: {
+  //   type: String,
+  //   enum: ['user', 'admin'],
+  //   default: 'user'
+  // },
   phone: {
     type: String,
     trim: true,
     maxlength: [50, 'Телефон не может быть длиннее 50 символов'],
-    match: [/^\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}$/, 'Неверный формат телефона']
+    // match: [/^\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}$/, 'Неверный формат телефона']
   },
   position: {
     type: String,
     trim: true,
     maxlength: [50, 'Должность не может быть длиннее 50 символов']
   },
-  isActive: {
-    type: Boolean,
-    default: true
-  }
+  // isActive: {
+  //   type: Boolean,
+  //   default: true
+  // }
 }, {
   timestamps: true
 });

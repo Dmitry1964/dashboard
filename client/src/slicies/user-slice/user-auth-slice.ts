@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { User } from "src/app/app-types";
-import api from "src/app/api";
+import api from "src/api/api";
+import { setToken } from "src/api/token";
 
 interface UserState {
   user: User;
@@ -9,19 +10,21 @@ interface UserState {
 
 const initialState: UserState = {
   user: {
+    id: '',
     firstName: '',
     lastName: '',
     email: '',
-    password: '',
     phone: '',
     position: '',
+    // role: 'user',
   },
   status: 'idle',
 }
 
-const registerUser = createAsyncThunk('user/registerUser', async (user: User) => {
-  const response = await api.post('/api/auth/register', user);
-  return response.data;
+export const fetchRegisterUser = createAsyncThunk('user/fetchRegisterUser', async (user: User) => {
+  const response = await api.post('/auth/register', user);
+  setToken(response.data.token);
+  return response.data.user;
 });
 
 export const userAuthSlice = createSlice({
@@ -29,14 +32,14 @@ export const userAuthSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => { 
-    builder.addCase(registerUser.pending, (state) => {
+    builder.addCase(fetchRegisterUser.pending, (state) => {
       state.status = 'loading';
     });
-    builder.addCase(registerUser.fulfilled, (state, action) => {
+    builder.addCase(fetchRegisterUser.fulfilled, (state, action) => {
       state.status = 'succeeded';
       state.user = action.payload;
     });
-    builder.addCase(registerUser.rejected, (state) => {
+    builder.addCase(fetchRegisterUser.rejected, (state) => {
       state.status = 'failed';
     });
   },

@@ -33,8 +33,8 @@ export const validateRegistration = [
     .withMessage('Фамилия должна содержать от 2 до 50 символов'),
   body('phone')
     .trim()
-    .matches(/^\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}$/)
-    .withMessage('Телефон должен быть в формате +7 (xxx) xxx-xx-xx'),
+    .matches(/^\+7\(\d{3}\)\s\d{3}-\d{2}-\d{2}$/)
+    .withMessage('Телефон должен быть в формате +7(960) 872-66-22'),
   body('position')
     .trim()
     .isLength({ min: 2, max: 50 })

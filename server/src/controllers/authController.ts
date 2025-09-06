@@ -12,6 +12,7 @@ const generateToken = (userId: string): string => {
 // Регистрация пользователя
 export const register = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
+    console.log('Полученные данные регистрации:', req.body);
     const { email, password, firstName, lastName, phone, position } = req.body;
     
     // Проверяем, существует ли пользователь с таким email
@@ -36,18 +37,18 @@ export const register = async (req: Request, res: Response, next: NextFunction):
     res.status(201).json({
       success: true,
       message: 'Пользователь успешно зарегистрирован',
-      data: {
+      // data: {
         user: {
           id: user._id,
           email: user.email,
           firstName: user.firstName,
           lastName: user.lastName,
-          role: user.role,
+          // role: user.role,
           phone: user.phone,
           position: user.position,
         },
         token
-      }
+      // }
     });
   } catch (error) {
     next(error);
@@ -88,7 +89,7 @@ export const login = async (req: Request, res: Response, next: NextFunction): Pr
           email: user.email,
           firstName: user.firstName,
           lastName: user.lastName,
-          role: user.role
+          // role: user.role
         },
         token
       }
