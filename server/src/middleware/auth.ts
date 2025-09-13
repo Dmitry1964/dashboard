@@ -14,17 +14,21 @@ declare global {
 export const authenticate = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     // Получаем токен из заголовка
-    const authHeader = req.headers.authorization;
+    const token = req.headers.authorization;
     
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      throw new AppError('Токен доступа не предоставлен', 401);
-    }
-    
-    const token = authHeader.substring(7); // Убираем 'Bearer ' из начала
-    
+    // if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    //   throw new AppError('Токен доступа не предоставлен', 401);
+    // }
+
     if (!token) {
       throw new AppError('Токен доступа не предоставлен', 401);
     }
+    
+    // const token = token.substring(7); // Убираем 'Bearer ' из начала
+    
+    // if (!token) {
+    //   throw new AppError('Токен доступа не предоставлен', 401);
+    // }
     
     try {
       // Проверяем токен

@@ -4,6 +4,7 @@ import { AppRouter } from "src/app/app-routes";
 import { NavLink } from "react-router-dom";
 import { UserIcon } from "src/enteties/user-icon";
 import { userLinks } from "src/app/app-constans";
+import { UserInfo } from "src/enteties/user-info";
 
 
 const Navbar = () => {
@@ -24,7 +25,7 @@ const Navbar = () => {
         <div className={cls.navbar__search}>
           <img
             className={cls.navbar__search_img}
-            src="content/svg/icon-search.svg"
+            src="/content/svg/icon-search.svg"
             width={16}
             height={16}
             alt="Иконка-поиск"
@@ -42,6 +43,7 @@ const Navbar = () => {
           pageHref={AppRouter.Auth}
         />
       </div>
+      <UserInfo firstName="John" lastName="Doe" position="Developer" />
     </nav>
   );
 };

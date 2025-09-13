@@ -7,6 +7,20 @@ export enum NavbarLinks {
   UserRegister = 'Регистрация нового пользователя'
 }
 
+export enum FetchStatus {
+  Idle = 'idle',
+  Loading = 'loading',
+  Succeeded = 'succeeded',
+  Failed = 'failed',
+}
+
+export enum AuthStatus {
+  Auth = 'auth',
+  NoAuth = 'no_auth',
+  Unkhown = 'unkhown',
+  Loading = 'loading',
+}
+
 export const userLinks: NavbarLinksType = {
   name: "Пользователь",
   links: [

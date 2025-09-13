@@ -3,6 +3,10 @@
 .navbar {
   padding: 4rem 2.8rem;
 }
+.navbar__wrapper {
+  border-bottom: 1px solid $color-cloud-burst;
+
+}
 
 .navbar__logo {
   display: flex;

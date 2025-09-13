@@ -1,51 +1,29 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchRegisterUser } from 'src/slicies/user-slice/user-auth-slice';
+import { fetchRegisterUser } from 'src/slicies/user-auth-slice/user-register-slice';
 import { AppDispatch } from 'src/store/store';
+import { formatPhoneNumber } from 'src/shared/service';
 import cls from './add-user.module.scss';
 
-// Функция для форматирования номера телефона
-const formatPhoneNumber = (value: string): string => {
-  // Удаляем все нецифровые символы
-  const phoneNumber = value.replace(/\D/g, '');
-  
-  // Если номер начинается с 8, заменяем на 7
-  const formattedNumber = phoneNumber.startsWith('8') ? '7' + phoneNumber.slice(1) : phoneNumber;
-  
-  // Если номер начинается с 7, форматируем
-  if (formattedNumber.startsWith('7')) {
-    const match = formattedNumber.match(/^7(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})$/);
-    if (match) {
-      const [, code, first, second, third] = match;
-      let result = '+7';
-      if (code) result += `(${code}`;
-      if (first) result += `) ${first}`;
-      if (second) result += `-${second}`;
-      if (third) result += `-${third}`;
-      return result;
-    }
-  }
-  
-  return value;
-};
 
 const AddUser = () => {
   const dispatch = useDispatch<AppDispatch>();
 
-  const [formData, setFormData] = useState({
+  const initialFormData = {
     firstName: '',
     lastName: '',
     email: '',
     password: '',
     phone: '',
     position: '',
-  });
+  }
 
-  const [description, setDescription] = useState('');
+  const [formData, setFormData] = useState(initialFormData);
 
   const handleSubmit = async () => {
     // e.preventDefault();
     dispatch(fetchRegisterUser(formData));
+    setFormData(initialFormData);
   }
 
   return (
@@ -84,8 +62,6 @@ const AddUser = () => {
             <img src="/content/svg/icon-pencil.svg" width={12} height={12} alt="" />
             <label htmlFor="description">Краткое описание</label>
             <textarea 
-              value={description} 
-              onChange={(e) => setDescription(e.target.value)}
               className={cls.add_user__textarea} 
               id='description' 
               placeholder='Введите описание' 

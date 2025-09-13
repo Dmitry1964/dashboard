@@ -1,7 +1,13 @@
 export enum AppRouter {
   Main = '/',
-  Auth = 'api/auth',
+  Auth = '/auth',
   Login = '/auth/login',
-  Register = 'api/auth/register',
+  Register = '/auth/register',
   userInfo = '/user-info'
+}
+
+export enum FetchRoutes {
+  Register = '/auth/register',
+  Login = '/auth/login',
+  UserInfo = '/auth/me',
 }
