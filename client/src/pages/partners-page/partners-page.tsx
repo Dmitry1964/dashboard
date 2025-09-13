@@ -13,7 +13,7 @@ const PartnersPage = () => {
 
   const handleButtonSearch = async () => {
   
-    const response = await apiFns.get(`egr?req=${code}&key=edd9076d3a58f1558dee240c49deef3f2a18bf82`)
+    const response = await apiFns.get(`egr?req=${code}&key=${import.meta.env.VITE_FNS_KEY}`)
     const {items} = response.data;
     const partner = items[0]['ЮЛ']
     console.log(partner['НаимПолнЮЛ']);
