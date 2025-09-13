@@ -4,7 +4,8 @@ import { NavbarLinksType } from "./app-types";
 export enum NavbarLinks {
   Users = 'Пользователи',
   Main = 'Главная',
-  UserRegister = 'Регистрация нового пользователя'
+  UserRegister = 'Регистрация нового пользователя',
+  Partners = 'Партнеры'
 }
 
 export enum FetchStatus {
@@ -21,6 +22,14 @@ export enum AuthStatus {
   Loading = 'loading',
 }
 
+export enum PartnerObjectKeys {
+  LongName = 'НаимПолнЮЛ',
+  ShortName = 'НаимСокрЮЛ',
+  INN = 'ИНН',
+  KPP = 'КПП',
+  OGRN = 'ОГРН'
+}
+
 export const userLinks: NavbarLinksType = {
   name: "Пользователь",
   links: [
@@ -33,4 +42,9 @@ export const userLinks: NavbarLinksType = {
       href: AppRouter.Login,
     },
   ],
+};
+
+export const partnersLink: NavbarLinksType = {
+  name: "Партнеры",
+  links: [],
 };

@@ -13,7 +13,6 @@ type NavbarLinksProps = {
 const NavbarLinks = ({ name, links, icon, pageHref }: NavbarLinksProps) => {
 
   const location = useSelector((state : RootState) => state.location.pathName);
-  // const isOpen = location === pageHref;
   const isOpen = location.toUpperCase().includes(pageHref.toUpperCase())
   
   return (

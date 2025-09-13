@@ -10,8 +10,12 @@ export const getHeaderTitle = (title : string) => {
     case AppRouter.Main :
       headerTitle = NavbarLinks.Main
       break
-     case AppRouter.Register :
+    case AppRouter.Register :
       headerTitle = NavbarLinks.UserRegister 
+      break
+    case AppRouter.Partners:
+      headerTitle = NavbarLinks.Partners
+      break
 
   }
 

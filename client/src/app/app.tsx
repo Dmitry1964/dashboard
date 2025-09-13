@@ -5,6 +5,7 @@ import Layout from "src/pages/layout/layout";
 import UserPage from "src/pages/user-page/ui/user-page";
 import MainPage from "src/pages/main-page/ui/main-page";
 import UserRegisterPage from "src/pages/user-register-page/ui/user-register-page";
+import PartnersPage from "src/pages/partners-page/partners-page";
 
 function App() {
 
@@ -28,6 +29,10 @@ function App() {
         {
           path: AppRouter.Register,
           element: <UserRegisterPage />
+        },
+        {
+          path: AppRouter.Partners,
+          element: <PartnersPage />
         }
       ]
     }

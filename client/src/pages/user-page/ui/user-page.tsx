@@ -2,9 +2,10 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import cls from './user-page.module.scss';
 import { changeLocation } from 'src/slicies/location-slice/location-slice';
+import { AppDispatch } from 'src/store/store';
 const UserPage = () => {
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     const pathhName = window.location.pathname;

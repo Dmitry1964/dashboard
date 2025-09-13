@@ -12,6 +12,7 @@ const Layout = () => {
   const  path = useSelector((state : RootState) => state.location.pathName);
 
   const title =  getHeaderTitle(path)
+  
 
   return (
     <div className={cls.layout}>

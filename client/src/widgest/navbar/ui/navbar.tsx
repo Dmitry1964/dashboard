@@ -3,7 +3,7 @@ import { NavbarLinks } from "src/enteties/navbar-link";
 import { AppRouter } from "src/app/app-routes";
 import { NavLink } from "react-router-dom";
 import { UserIcon } from "src/enteties/user-icon";
-import { userLinks } from "src/app/app-constans";
+import { partnersLink, userLinks } from "src/app/app-constans";
 import { UserInfo } from "src/enteties/user-info";
 
 
@@ -41,6 +41,11 @@ const Navbar = () => {
           links={userLinks.links}
           icon = {<UserIcon/>}
           pageHref={AppRouter.Auth}
+        />
+        <NavbarLinks 
+          name={partnersLink.name}
+          icon={<UserIcon/>}
+          pageHref={AppRouter.Partners}
         />
       </div>
       <UserInfo firstName="John" lastName="Doe" position="Developer" />

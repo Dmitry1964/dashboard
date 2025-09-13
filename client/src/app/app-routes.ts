@@ -3,7 +3,8 @@ export enum AppRouter {
   Auth = '/auth',
   Login = '/auth/login',
   Register = '/auth/register',
-  userInfo = '/user-info'
+  userInfo = '/user-info',
+  Partners = '/partners'
 }
 
 export enum FetchRoutes {
