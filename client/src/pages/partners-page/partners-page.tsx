@@ -1,22 +1,22 @@
 import { useEffect, useState } from 'react';
 import cls from './partners-page.module.scss';
-import apiFns from 'src/api/api-fns';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from 'src/store/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from 'src/store/store';
 import { changeLocation } from 'src/slicies/location-slice/location-slice';
+import { fetchNewPartners } from 'src/slicies/new-partners-slice/new-partners-slice';
 
 
 const PartnersPage = () => {
 
   const [code, setCode] = useState('');
-  const dispatch = useDispatch<AppDispatch>()
-
-  const handleButtonSearch = async () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const newPartners = useSelector((state : RootState) =>  state.newPartner);
+  console.log(newPartners);
   
-    const response = await apiFns.get(`egr?req=${code}&key=${import.meta.env.VITE_FNS_KEY}`)
-    const {items} = response.data;
-    const partner = items[0]['ЮЛ']
-    console.log(partner['НаимПолнЮЛ']);
+  
+
+  const handleButtonSearch = () => {
+    dispatch(fetchNewPartners(code));
   }
 
   useEffect(() => {

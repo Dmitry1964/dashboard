@@ -14,7 +14,7 @@ export type User = {
   // role: 'user' | 'admin';
 }
 
-export interface INewPartners {
+export interface IPartners {
   inn: string;
   shortName: string;
 }

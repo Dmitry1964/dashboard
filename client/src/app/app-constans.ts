@@ -27,7 +27,8 @@ export enum PartnerObjectKeys {
   ShortName = 'НаимСокрЮЛ',
   INN = 'ИНН',
   KPP = 'КПП',
-  OGRN = 'ОГРН'
+  OGRN = 'ОГРН',
+  DIFINITION ='ЮЛ'
 }
 
 export const userLinks: NavbarLinksType = {
