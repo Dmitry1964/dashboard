@@ -13,3 +13,8 @@ export type User = {
   position: string;
   // role: 'user' | 'admin';
 }
+
+export interface INewPartners {
+  inn: string;
+  shortName: string;
+}
