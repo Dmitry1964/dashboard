@@ -6,6 +6,7 @@ import UserPage from "src/pages/user-page/ui/user-page";
 import MainPage from "src/pages/main-page/ui/main-page";
 import UserRegisterPage from "src/pages/user-register-page/ui/user-register-page";
 import PartnersPage from "src/pages/partners-page/partners-page";
+import { PartnersBayers } from "src/pages/partners-bayers";
 
 function App() {
 
@@ -33,6 +34,10 @@ function App() {
         {
           path: AppRouter.Partners,
           element: <PartnersPage />
+        },
+        {
+          path: AppRouter.Bayers,
+          element: <PartnersBayers/>
         }
       ]
     }

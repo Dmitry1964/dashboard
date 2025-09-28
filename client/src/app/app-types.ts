@@ -17,4 +17,9 @@ export type User = {
 export interface IPartners {
   inn: string;
   shortName: string;
+  fullName?: string;
+  phone?: string;
+  contacts?: string;
 }
+
+export type IPartnersList = IPartners[];

@@ -47,5 +47,14 @@ export const userLinks: NavbarLinksType = {
 
 export const partnersLink: NavbarLinksType = {
   name: "Партнеры",
-  links: [],
+  links: [
+    {
+      title: "Покупатели",
+      href: AppRouter.Bayers
+    },
+    {
+      title: "Поставщики",
+      href: '#'
+    }
+  ],
 };

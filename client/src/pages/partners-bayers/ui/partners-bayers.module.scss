@@ -1,0 +1,84 @@
+@use  '../../../styles/variables.scss' as *;
+
+.partners_bayers {
+  border: 1px solid $color-cloud-burst;
+  border-radius: 12px;
+  width: 90%;
+  height: 90%;
+  background-color: $color-midnight-express;
+  padding-top: 20px;
+  position: relative;
+}
+
+.partners_bayers__header {
+  border-bottom: 1px solid $color-cloud-burst;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.partners_bayers__title {
+  font-size: 1.6rem;
+  border-bottom: 1px solid $color-cloud-burst;
+  margin: 0 0 15px;
+  padding: 0 15px 20px;
+}
+
+.partners_bayers__add {
+  font-size: 1.6rem;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  border: none;
+  margin: 0;
+  padding: 0 15px;
+}
+
+[id='inn-field'] {
+  width: 300px;
+  padding: 5px;
+  border: 1px solid $color-cloud-burst;
+  border-radius: 5px;
+  background: transparent;
+  color: $color-default-white;
+}
+
+.partners_bayers__add_button {
+  border: none;
+  padding: 0;
+  height: 100%;
+  cursor: pointer;
+  background: transparent;
+}
+
+.partners_bayers__list_header {
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+
+  display: grid;
+  grid-template-columns: 20px repeat(4, 1fr);
+  // column-gap: 10px;
+  background-color: $color-black-russian;
+
+  & li {
+    font-size: 1.2rem;
+  }
+}
+
+.partners_bayers__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.partners_bayers__item {
+  display: grid;
+  grid-template-columns: 20px repeat(4, 1fr);
+  font-size: 1.2rem;
+  padding: 15px 10px;
+  background-color: $color-black-russian-80;
+
+  &:nth-child(even) {
+    background-color: $color-black-russian;
+  }
+}

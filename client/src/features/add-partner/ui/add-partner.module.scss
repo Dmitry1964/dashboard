@@ -1,0 +1,84 @@
+@use '../../../styles/variables.scss' as *;
+
+.add_partner {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background-color: $color-midnight-express;
+}
+
+.add_partner__title {
+  font-size: 1.6rem;
+  line-height: 1.8rem;
+  font-weight: 500;
+  margin: 25px;
+}
+
+.add_partner__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid $color-cloud-burst;
+  border-radius: 10px;
+  width: 70%;
+  margin-bottom: 30px;
+}
+
+.add_partner__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+
+  & label {
+    flex-grow: 1;
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+  }
+}
+
+.add_partner__input {
+  width: 350px;
+  height: 42px;
+  padding: 0 20px;
+  align-self: flex-end;
+  border: 1px solid $color-cloud-burst;
+  border-radius: 10px;
+  background: transparent;
+  color: $color-default-white;
+}
+
+.add_partner__buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+}
+
+.add_partner__button_submit {
+  width: 150px;
+  height: 50px;
+  margin-top: 25px;
+  border: none;
+  border-radius: 10px;
+  background: $graient;
+  font-size: 1.6rem;
+  color: $color-default-white;
+  cursor: pointer;
+
+}
+
+.add_partner__button_close {
+  width: 150px;
+  height: 50px;
+  margin-top: 25px;
+  border: none;
+  border-radius: 10px;
+  background-color: $color-cloud-burst;
+  font-size: 1.6rem;
+  color: $color-default-white;
+  cursor: pointer;
+
+}
+

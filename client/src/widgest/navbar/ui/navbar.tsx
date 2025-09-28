@@ -46,6 +46,7 @@ const Navbar = () => {
           name={partnersLink.name}
           icon={<UserIcon/>}
           pageHref={AppRouter.Partners}
+          links={partnersLink.links}
         />
       </div>
       <UserInfo firstName="John" lastName="Doe" position="Developer" />
