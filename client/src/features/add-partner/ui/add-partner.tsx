@@ -1,7 +1,22 @@
+import { IPartners } from 'src/app/app-types';
 import cls from './add-partner.module.scss';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from 'src/store/store';
+import { addPartnerClose } from 'src/slicies/new-partners-slice/new-partners-slice';
+
+type AddPartnerType = {
+  newPartner: IPartners;
+}
 
 
-const AddPartner = () => {
+const AddPartner = ({newPartner} : AddPartnerType) => {
+
+  const dispatch = useDispatch<AppDispatch>();
+
+  const {inn, shortName} = newPartner;
+  const handleButtonClose = () => {
+    dispatch(addPartnerClose())
+  }
   return (
     <section className={cls.add_partner}>
       <h2 className={cls.add_partner__title}>Новый покупатель</h2>
@@ -10,12 +25,12 @@ const AddPartner = () => {
           <div className={cls.add_partner__item}>
             <img src="/content/svg/icon-users.svg" width={12} height={12} alt="Пользователь" />
             <label htmlFor="short-name">Наименование</label>
-            <input className={cls.add_partner__input} id='short-name' type="text" placeholder='Наименование' />
+            <input value={shortName} className={cls.add_partner__input} id='short-name' type="text" placeholder='Наименование' />
           </div>
           <div className={cls.add_partner__item}>
             <img src="/content/svg/icon-users.svg" width={12} height={12} alt="ИНН" />
             <label htmlFor="inn-code">ИНН</label>
-            <input className={cls.add_partner__input} id='inn-code' type="text" placeholder='ИНН' />
+            <input value={inn} className={cls.add_partner__input} id='inn-code' type="text" placeholder='ИНН' />
           </div>
           <div className={cls.add_partner__item}>
             <img src="/content/svg/icon-users.svg" width={12} height={12} alt="Телефон" />
@@ -30,7 +45,7 @@ const AddPartner = () => {
         </fieldset>
         <div className={cls.add_partner__buttons}>
           <button className={cls.add_partner__button_submit} type='submit'>Добавить</button>
-          <button className={cls.add_partner__button_close} type='button'>Закрыть</button>
+          <button onClick={handleButtonClose} className={cls.add_partner__button_close} type='button'>Закрыть</button>
         </div>
 
       </form>

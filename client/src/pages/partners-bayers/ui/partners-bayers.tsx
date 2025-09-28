@@ -1,19 +1,23 @@
 import { useState } from "react";
 import cls from "./partners-bayers.module.scss";
 import { partnersList } from "src/shared/mocks";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "src/store/store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "src/store/store";
 import { fetchNewPartners } from "src/slicies/new-partners-slice/new-partners-slice";
 import { AddPartner } from "src/features/add-partner";
+import { FetchStatus } from "src/app/app-constans";
 
 const PartnersBayers = () => {
 
   const [code, setCode] = useState('');
   const dispatch = useDispatch<AppDispatch>();
+  const fetchStatus = useSelector((state : RootState) => state.newPartner.fetchStatus);
+  const partner = useSelector((state : RootState) => state.newPartner.partners);
   const handleAddButton = () => {
-    dispatch(fetchNewPartners(code))
+    dispatch(fetchNewPartners(code));
+    setCode('');
   };
-
+  
 
   return (
     <section className={cls.partners_bayers}>
@@ -50,7 +54,9 @@ const PartnersBayers = () => {
           ))
         }
       </ul>
-      <AddPartner />
+      {fetchStatus === FetchStatus.Succeeded && 
+        <AddPartner newPartner={partner}/>
+      }
     </section>
   )
 }

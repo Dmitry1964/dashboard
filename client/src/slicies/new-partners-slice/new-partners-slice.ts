@@ -38,7 +38,11 @@ export const fetchNewPartners = createAsyncThunk<IPartners, string, { rejectValu
 const newPartnersSlice = createSlice({
   name: 'new-partner',
   initialState,
-  reducers: {},
+  reducers: {
+    addPartnerClose: (state) => {
+      state.fetchStatus = FetchStatus.Idle;
+    },
+  },
   extraReducers(builder) {
     builder.addCase(fetchNewPartners.pending, (state) => {
       state.fetchStatus = FetchStatus.Loading
@@ -54,5 +58,5 @@ const newPartnersSlice = createSlice({
   },
 })
 
-
+export const { addPartnerClose } = newPartnersSlice.actions;
 export default newPartnersSlice.reducer;
