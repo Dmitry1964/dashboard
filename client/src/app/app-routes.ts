@@ -12,4 +12,5 @@ export enum FetchRoutes {
   Register = '/auth/register',
   Login = '/auth/login',
   UserInfo = '/auth/me',
+  Bayers = '/partners/bayers',
 }

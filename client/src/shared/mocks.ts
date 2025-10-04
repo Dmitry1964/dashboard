@@ -14,13 +14,13 @@ export const partnersList : IPartnersList = [
   contacts: "Петров Петр Иванович"
 },
 {
-  inn: '12345678',
+  inn: '1234567812',
   shortName: 'Ласточка Plus',
   phone: '+7 963 894-56-45',
   contacts: "Петров Петр Иванович"
 },
 {
-  inn: '87645231',
+  inn: '8764523111',
   shortName: 'Рога и копыта Plus',
   phone: '+7 963 894-56-45',
   contacts: "Петров Петр Иванович"

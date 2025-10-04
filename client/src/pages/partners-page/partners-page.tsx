@@ -11,9 +11,6 @@ const PartnersPage = () => {
   const [code, setCode] = useState('');
   const dispatch = useDispatch<AppDispatch>();
   const newPartners = useSelector((state : RootState) =>  state.newPartner);
-  console.log(newPartners);
-  
-  
 
   const handleButtonSearch = () => {
     dispatch(fetchNewPartners(code));
