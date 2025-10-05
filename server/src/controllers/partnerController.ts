@@ -39,13 +39,11 @@ export const createBayers = async (req: Request, res: Response, next: NextFuncti
 
 // Получить всех покупателей
 
-export const getBayers = async (req: Request, res: Response, next: NextFunction) : Promise<void> => {
+export const getPartners = async (req: Request, res: Response, next: NextFunction) : Promise<void> => {
     try {
-        const bayers = await Partner.find();
-        res.status(200).json({
-            success: true,
-            data: bayers
-        })
+        const partners = await Partner.find();
+        res.status(200).json(partners);
+
     } catch (error) {
         next(error)
     }

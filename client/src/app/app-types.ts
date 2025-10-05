@@ -1,3 +1,4 @@
+import { PartnerRoles } from "./app-constans";
 
 export type NavbarLinksType = {
   name: string;
@@ -15,11 +16,15 @@ export type User = {
 }
 
 export interface IPartners {
+  id: string;
   inn: string;
   shortName: string;
   fullName?: string;
   phone?: string;
   contacts?: string;
+  roles: PartnerRoles;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export type IPartnersList = IPartners[];

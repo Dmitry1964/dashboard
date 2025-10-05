@@ -1,4 +1,4 @@
-import { createBayers, getBayers } from "../controllers/partnerController";
+import { getPartners, createBayers } from "../controllers/partnerController";
 import { Router } from "express";
 
 
@@ -11,6 +11,6 @@ const router = Router();
 router.post('/bayers', createBayers);
 
 // Получить всех покупателей GET /api/partners/bayers
-router.get('/bayers', getBayers);
+router.get('/', getPartners);
 
 export default router;

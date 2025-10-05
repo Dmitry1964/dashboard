@@ -1,17 +1,22 @@
 import { useEffect } from 'react';
 import cls from './partners-page.module.scss';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from 'src/store/store';
 import { changeLocation } from 'src/slicies/location-slice/location-slice';
 import { AppRouter } from 'src/app/app-routes';
 import { Link } from 'react-router-dom';
-import { partnersList } from 'src/shared/mocks';
+// import { partnersList } from 'src/shared/mocks';
+import { fetchPartnersList } from 'src/slicies/partners-list-slice/partners-list-slice';
+import { RootState } from  'src/store/store';
+import { IPartners } from 'src/app/app-types';
 
 
 const PartnersPage = () => {
 
   // const [code, setCode] = useState('');
   const dispatch = useDispatch<AppDispatch>();
+  const partnersList: IPartners[] = useSelector((state: RootState) => state.partnersList.partners);
+  console.log(partnersList);
   // const newPartners = useSelector((state : RootState) =>  state.newPartner);
 
   // const handleButtonSearch = () => {
@@ -21,8 +26,9 @@ const PartnersPage = () => {
   useEffect(() => {
     const pathhName = window.location.pathname;
     dispatch(changeLocation(pathhName));
+    dispatch(fetchPartnersList());
 
-  })
+  }, [dispatch])
 
 
   return (
@@ -73,7 +79,7 @@ const PartnersPage = () => {
         <li>Контактное лицо</li>
       </ul>
       <ul className={cls.partners_page__list}>
-        {
+        { partnersList.length &&
           partnersList.map((item) => (
             <li key={item.inn} className={cls.partners_page__item}>
               <span>i</span>
