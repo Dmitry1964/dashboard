@@ -1,9 +1,16 @@
-import { createBayers } from "../controllers/partnerController";
+import { createBayers, getBayers } from "../controllers/partnerController";
 import { Router } from "express";
 
 
 const router = Router();
 
-router.use('/bayers', createBayers);
+
+// Маршруты для покупателей
+
+// Добавить покупателя POST /api/partners/bayers
+router.post('/bayers', createBayers);
+
+// Получить всех покупателей GET /api/partners/bayers
+router.get('/bayers', getBayers);
 
 export default router;

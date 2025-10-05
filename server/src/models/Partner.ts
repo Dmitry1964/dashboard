@@ -6,6 +6,7 @@ export interface IPartners {
     fullName?: string;
     phone?: string;
     contacts?: string;
+    roles: 'Покупатели' | 'Поставщики';
   }
   
   const partnerSchema = new Schema<IPartners>({
@@ -17,7 +18,8 @@ export interface IPartners {
     inn: {
         type: String,
         required: [true, 'ИНН обязателен'],
-        minlength: [10, 'ИНН должен содержать не менее 10 знаков']
+        minlength: [10, 'ИНН должен содержать не менее 10 знаков'],
+        unique: true
     },
     phone: {
         type: String,
@@ -25,7 +27,8 @@ export interface IPartners {
         maxlength: [50, 'Телефон не может быть длиннее 50 символов'],
     
     },
-    contacts: String
+    contacts: String,
+    roles: String
   },
   {
     timestamps: true

@@ -58,3 +58,8 @@ export const partnersLink: NavbarLinksType = {
     }
   ],
 };
+
+export enum PartnerRoles {
+  Bayers = 'Покупатели',
+  Suppliers = 'Поставщики'
+}
