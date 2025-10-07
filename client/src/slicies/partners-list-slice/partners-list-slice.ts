@@ -17,7 +17,7 @@ const initialState: PartnersListState = {
   message: ''
 }
 
-export const fetchPartnersList = createAsyncThunk<IPartners[], void, { rejectValue: string }>(
+export const fetchPartnersList = createAsyncThunk<IPartners[]>(
   'partners-list/fetch',
   async () => {
     const response = await api.get(FetchRoutes.Partners);

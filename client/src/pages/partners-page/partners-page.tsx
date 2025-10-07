@@ -39,7 +39,7 @@ const PartnersPage = () => {
             <img className={cls.partners_page__header_item_icon} src="/content/svg/icon-total-partners.svg" alt="Все партнеры" />
             <div className={cls.partners_page__header_item_content}>
               <h3>Все партнеры</h3>
-              <span>0</span>
+              <span>{partnersList.length}</span>
             </div>
           </Link>
         </li>
