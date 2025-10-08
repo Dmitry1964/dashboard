@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import { fetchPartnersList } from 'src/slicies/partners-list-slice/partners-list-slice';
 import { RootState } from  'src/store/store';
 import { IPartners } from 'src/app/app-types';
+import { FetchStatus } from 'src/app/app-constans';
 
 
 const PartnersPage = () => {
@@ -16,19 +17,16 @@ const PartnersPage = () => {
   // const [code, setCode] = useState('');
   const dispatch = useDispatch<AppDispatch>();
   const partnersList: IPartners[] = useSelector((state: RootState) => state.partnersList.partners);
-  console.log(partnersList);
-  // const newPartners = useSelector((state : RootState) =>  state.newPartner);
-
-  // const handleButtonSearch = () => {
-  //   dispatch(fetchNewPartners(code));
-  // }
+  const fetchStatus = useSelector((state: RootState) => state.partnersList.fetchStatus);
 
   useEffect(() => {
     const pathhName = window.location.pathname;
     dispatch(changeLocation(pathhName));
-    dispatch(fetchPartnersList());
+    if (fetchStatus === FetchStatus.Idle) {
+      dispatch(fetchPartnersList());
+    }
 
-  }, [dispatch])
+  }, [dispatch, fetchStatus])
 
 
   return (
@@ -79,7 +77,7 @@ const PartnersPage = () => {
         <li>Контактное лицо</li>
       </ul>
       <ul className={cls.partners_page__list}>
-        { partnersList.length &&
+        { fetchStatus === FetchStatus.Succeeded &&
           partnersList.map((item) => (
             <li key={item.inn} className={cls.partners_page__item}>
               <span>i</span>
@@ -87,6 +85,12 @@ const PartnersPage = () => {
               <span>{item.inn}</span>
               <span>{item.phone ?? '-'}</span>
               <span>{item.contacts ?? '-'}</span>
+              <Link className={cls.partners_page__item_button} to={AppRouter.Bayers}>
+                <img src="/content/svg/icon-edit.svg" alt="Редактировать" />
+              </Link>
+              <Link className={cls.partners_page__item_button} to={AppRouter.Bayers}>
+                <img src="/content/svg/icon-delete.svg" alt="Удалить" />
+              </Link>
             </li>
           ))
         }

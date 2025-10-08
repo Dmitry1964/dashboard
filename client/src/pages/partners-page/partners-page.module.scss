@@ -12,7 +12,7 @@
 
 .partners_page__header {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr) ;
   gap: 20px;
   list-style: none;
   padding: 0;
@@ -71,7 +71,7 @@
   padding: 10px;
 
   display: grid;
-  grid-template-columns: 20px repeat(4, 1fr);
+  grid-template-columns: 20px repeat(4, 1fr) 40px 40px;
   // column-gap: 10px;
   background-color: $color-black-russian;
 
@@ -89,7 +89,7 @@
 
 .partners_page__item {
   display: grid;
-  grid-template-columns: 20px repeat(4, 1fr);
+  grid-template-columns: 20px repeat(4, 1fr) 40px 40px;
   font-size: 1.2rem;
   padding: 15px 10px;
   background-color: $color-black-russian-80;
@@ -97,4 +97,11 @@
   &:nth-child(even) {
     background-color: $color-black-russian;
   }
+}
+
+.partners_page__item_button {
+  border: none;
+  padding: 0;
+  background: transparent;
+  text-align: center;
 }
