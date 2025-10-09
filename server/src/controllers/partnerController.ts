@@ -5,7 +5,7 @@ import {Request, Response, NextFunction} from 'express';
 
 // Создать нового покупателя
 
-export const createBayers = async (req: Request, res: Response, next: NextFunction) : Promise<void> => {
+export const createPartners = async (req: Request, res: Response, next: NextFunction) : Promise<void> => {
 
     try {
         const {shortName, inn, phone, contacts, roles} = req.body;
@@ -14,7 +14,7 @@ export const createBayers = async (req: Request, res: Response, next: NextFuncti
         if (existingPartner) {
             res.status(400).json({
                 success: false,
-                message: 'Покупатель с таким ИНН уже существует'
+                message: 'Партнер с таким ИНН уже существует'
             });
             return;
         }
@@ -37,7 +37,7 @@ export const createBayers = async (req: Request, res: Response, next: NextFuncti
     }
 }
 
-// Получить всех покупателей
+// Получить всех партнеров
 
 export const getPartners = async (req: Request, res: Response, next: NextFunction) : Promise<void> => {
     try {
@@ -45,6 +45,18 @@ export const getPartners = async (req: Request, res: Response, next: NextFunctio
         res.status(200).json(partners);
 
     } catch (error) {
+        next(error)
+    }
+}
+
+// Получить всех покупателей
+
+export const getBayers = async (req: Request, res: Response, next: NextFunction) : Promise<void> => {
+    try {
+        const bayers = await Partner.find({roles: 'Покупатели'});
+        res.status(200).json(bayers);
+    }
+    catch (error) {
         next(error)
     }
 }

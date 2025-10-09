@@ -26,7 +26,7 @@ const NavbarLinks = ({ name, links, icon, pageHref }: NavbarLinksProps) => {
         <ul className={[cls.navbar_links__list, isOpen ? cls.open_list : " "].join(' ')}>
           {links.map((link) => (
             <li className={cls.navbar_links__item} key={link.title}>
-              <NavLink className={cls.navbar_links__link} to={link.href}>{link.title}</NavLink>
+              <NavLink className={({isActive}) => [cls.navbar_links__link, isActive ? cls.active_link__item : " "].join(' ')} to={link.href}>{link.title}</NavLink>
             </li>
           ))}
         </ul>

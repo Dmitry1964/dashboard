@@ -6,19 +6,24 @@ import { addPartnerClose } from 'src/slicies/new-partners-slice/new-partners-sli
 import { useState } from 'react';
 import { FetchRoutes } from 'src/app/app-routes';
 import api from 'src/api/api';
+import { PartnerRoles } from 'src/app/app-constans';
 
 type AddPartnerType = {
   newPartner: IPartners;
 }
 
 
-const AddPartner = ({newPartner} : AddPartnerType) => {
+const AddBayers = ({newPartner} : AddPartnerType) => {
 
   const initialFormData : IPartners = {
     shortName: '',
     inn: '',
     phone: '',
     contacts: '',
+    roles: PartnerRoles.Bayers,
+    id: '',
+    createdAt: '',
+    updatedAt: ''
   }
 
   const [formData, setFormData] = useState(initialFormData);
@@ -83,4 +88,4 @@ const AddPartner = ({newPartner} : AddPartnerType) => {
   )
 }
 
-export default AddPartner;
+export default AddBayers;
