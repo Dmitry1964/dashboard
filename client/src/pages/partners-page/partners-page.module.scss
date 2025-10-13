@@ -105,3 +105,30 @@
   background: transparent;
   text-align: center;
 }
+
+.partners_page__add {
+  font-size: 1.6rem;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  border: none;
+  margin: 0;
+  padding: 30px 15px;
+}
+
+[id='inn-field'] {
+  width: 300px;
+  padding: 5px;
+  border: 1px solid $color-cloud-burst;
+  border-radius: 5px;
+  background: transparent;
+  color: $color-default-white;
+}
+
+.partners_page__add_button {
+  border: none;
+  padding: 0;
+  height: 100%;
+  cursor: pointer;
+  background: transparent;
+}

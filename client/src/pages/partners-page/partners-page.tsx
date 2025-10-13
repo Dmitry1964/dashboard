@@ -1,32 +1,39 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import cls from './partners-page.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from 'src/store/store';
 import { changeLocation } from 'src/slicies/location-slice/location-slice';
 import { AppRouter } from 'src/app/app-routes';
 import { Link } from 'react-router-dom';
-// import { partnersList } from 'src/shared/mocks';
 import { fetchPartnersList } from 'src/slicies/partners-list-slice/partners-list-slice';
 import { RootState } from  'src/store/store';
 import { IPartners } from 'src/app/app-types';
 import { FetchStatus } from 'src/app/app-constans';
+import { fetchNewPartners } from 'src/slicies/new-partners-slice/new-partners-slice';
+import { AddPartner } from 'src/features/add-partner';
 
 
 const PartnersPage = () => {
 
-  // const [code, setCode] = useState('');
+  const [code, setCode] = useState('');
   const dispatch = useDispatch<AppDispatch>();
+  const fetchStatusPartner = useSelector((state : RootState) => state.newPartner.fetchStatus);
+  const partner = useSelector((state : RootState) => state.newPartner.partners);
   const partnersList: IPartners[] = useSelector((state: RootState) => state.partnersList.partners);
-  const fetchStatus = useSelector((state: RootState) => state.partnersList.fetchStatus);
+  const fetchStatusList = useSelector((state: RootState) => state.partnersList.fetchStatus);
+  const handleAddButton = () => {
+    dispatch(fetchNewPartners(code));
+    setCode('');
+  };
+
 
   useEffect(() => {
     const pathhName = window.location.pathname;
     dispatch(changeLocation(pathhName));
-    if (fetchStatus === FetchStatus.Idle) {
+    if (fetchStatusList === FetchStatus.Idle) { 
       dispatch(fetchPartnersList());
     }
-
-  }, [dispatch, fetchStatus])
+  }, [dispatch, fetchStatusList])
 
 
   return (
@@ -69,6 +76,17 @@ const PartnersPage = () => {
           </Link>
         </li>
       </ul>
+      <fieldset className={cls.partners_page__add}>
+          <label htmlFor="inn-field">Добавить партнера</label>
+          <input value={code} onChange={(e) => setCode(e.target.value)} id="inn-field" type="text" placeholder="ИНН" />
+          <button
+          onClick={() => handleAddButton()}
+            className={cls.partners_page__add_button} 
+           >
+            <img src="/content/svg/icon-search.svg" alt="Кнопка найти" />
+          </button>
+        </fieldset>
+
       <ul className={cls.partners_page__list_header}>
         <li></li>
         <li>Наименование</li>
@@ -76,8 +94,9 @@ const PartnersPage = () => {
         <li>Телефон</li>
         <li>Контактное лицо</li>
       </ul>
+
       <ul className={cls.partners_page__list}>
-        { fetchStatus === FetchStatus.Succeeded &&
+        { fetchStatusList === FetchStatus.Succeeded &&
           partnersList.map((item) => (
             <li key={item.inn} className={cls.partners_page__item}>
               <span>i</span>
@@ -95,9 +114,9 @@ const PartnersPage = () => {
           ))
         }
       </ul>
-      {/* {fetchStatus === FetchStatus.Succeeded && 
+      {fetchStatusPartner === FetchStatus.Succeeded && 
         <AddPartner newPartner={partner}/>
-      } */}
+      }
     </section>
   )
 }
