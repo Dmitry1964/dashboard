@@ -1,91 +1,174 @@
-import { IPartners } from 'src/app/app-types';
-import cls from './add-partner.module.scss';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from 'src/store/store';
-import { addPartnerClose } from 'src/slicies/new-partners-slice/new-partners-slice';
-import { useState } from 'react';
-import { FetchRoutes } from 'src/app/app-routes';
-import api from 'src/api/api';
-import { PartnerRoles } from 'src/app/app-constans';
+import { IPartners } from "src/app/app-types";
+import cls from "./add-partner.module.scss";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "src/store/store";
+import { addPartnerClose } from "src/slicies/new-partners-slice/new-partners-slice";
+import { useState } from "react";
+import { FetchRoutes } from "src/app/app-routes";
+import api from "src/api/api";
+import { PartnerRoles } from "src/app/app-constans";
 
 type AddPartnerType = {
   newPartner: IPartners;
-}
+};
 
-
-const AddBayers = ({newPartner} : AddPartnerType) => {
-
-  const initialFormData : IPartners = {
-    shortName: '',
-    inn: '',
-    phone: '',
-    contacts: '',
+const AddBayers = ({ newPartner }: AddPartnerType) => {
+  const initialFormData: IPartners = {
+    shortName: "",
+    inn: "",
+    phone: "",
+    contacts: "",
     roles: PartnerRoles.Bayers,
-    id: '',
-    createdAt: '',
-    updatedAt: ''
-  }
+    id: "",
+    createdAt: "",
+    updatedAt: "",
+  };
 
   const [formData, setFormData] = useState(initialFormData);
 
   const dispatch = useDispatch<AppDispatch>();
 
-  const {inn, shortName} = newPartner;
+  const { inn, shortName } = newPartner;
   const handleButtonClose = () => {
-    dispatch(addPartnerClose())
-  }
+    dispatch(addPartnerClose());
+  };
 
   const fetchAddPartner = async (data: IPartners) => {
     try {
       const response = await api.post(FetchRoutes.Bayers, data);
       if (response.status === 200) {
-        dispatch(addPartnerClose())
+        dispatch(addPartnerClose());
       }
     } catch (error) {
       console.log(error);
       return false;
     }
-   
-  }
+  };
 
   const handleSubmit = () => {
-    setFormData({...formData, inn: inn, shortName: shortName});
+    setFormData({ ...formData, inn: inn, shortName: shortName });
     fetchAddPartner(formData);
-  }
+  };
   return (
     <section className={cls.add_partner}>
       <h2 className={cls.add_partner__title}>Новый покупатель</h2>
-      <form onSubmit={e => e.preventDefault()}>
+      <form onSubmit={(e) => e.preventDefault()}>
         <fieldset className={cls.add_partner__fields}>
           <div className={cls.add_partner__item}>
-            <img src="/content/svg/icon-users.svg" width={12} height={12} alt="Пользователь" />
+            <img
+              src="/content/svg/icon-users.svg"
+              width={12}
+              height={12}
+              alt="Пользователь"
+            />
             <label htmlFor="short-name">Наименование</label>
-            <input value={shortName} className={cls.add_partner__input} id='short-name' type="text" placeholder='Наименование' />
+            <input
+              value={shortName}
+              className={cls.add_partner__input}
+              id="short-name"
+              type="text"
+              placeholder="Наименование"
+            />
           </div>
           <div className={cls.add_partner__item}>
-            <img src="/content/svg/icon-users.svg" width={12} height={12} alt="ИНН" />
+            <img
+              src="/content/svg/icon-users.svg"
+              width={12}
+              height={12}
+              alt="ИНН"
+            />
             <label htmlFor="inn-code">ИНН</label>
-            <input  value={inn} className={cls.add_partner__input} id='inn-code' type="text" placeholder='ИНН' />
+            <input
+              value={inn}
+              className={cls.add_partner__input}
+              id="inn-code"
+              type="text"
+              placeholder="ИНН"
+            />
           </div>
           <div className={cls.add_partner__item}>
-            <img src="/content/svg/icon-users.svg" width={12} height={12} alt="Телефон" />
+            <img
+              src="/content/svg/icon-users.svg"
+              width={12}
+              height={12}
+              alt="Телефон"
+            />
             <label htmlFor="phone">Телефон</label>
-            <input onChange={(e) => setFormData({ ...formData, phone: e.target.value, inn: inn, shortName: shortName })} className={cls.add_partner__input} id='phone' type="text" placeholder='Телефон' />
+            <input
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  phone: e.target.value,
+                  inn: inn,
+                  shortName: shortName,
+                })
+              }
+              className={cls.add_partner__input}
+              id="phone"
+              type="text"
+              placeholder="Телефон"
+            />
           </div>
           <div className={cls.add_partner__item}>
-            <img src="/content/svg/icon-users.svg" width={12} height={12} alt="Контактное лицо" />
+            <img
+              src="/content/svg/icon-users.svg"
+              width={12}
+              height={12}
+              alt="Контактное лицо"
+            />
             <label htmlFor="contact-name">Контактное лицо</label>
-            <input onChange={(e) => setFormData({ ...formData, contacts: e.target.value })} className={cls.add_partner__input} id='contact-name' type="text" placeholder='Контакт' />
+            <input
+              onChange={(e) =>
+                setFormData({ ...formData, contacts: e.target.value })
+              }
+              className={cls.add_partner__input}
+              id="contact-name"
+              type="text"
+              placeholder="Контакт"
+            />
+          </div>
+          <div className={cls.add_partner__item}>
+            <img
+              src="/content/svg/icon-users.svg"
+              width={12}
+              height={12}
+              alt="Роль"
+            />
+            <label htmlFor="role">Группа</label>
+            <select 
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  roles: e.target.value as PartnerRoles,
+                })
+              }
+              className={cls.add_partner__input}
+              id="role"
+            >
+              <option value={PartnerRoles.Bayers}>{PartnerRoles.Bayers}</option>
+              <option value={PartnerRoles.Suppliers}>{PartnerRoles.Suppliers}</option>
+            </select>
           </div>
         </fieldset>
         <div className={cls.add_partner__buttons}>
-          <button onClick={() => handleSubmit()} className={cls.add_partner__button_submit} type='submit'>Добавить</button>
-          <button onClick={handleButtonClose} className={cls.add_partner__button_close} type='button'>Закрыть</button>
+          <button
+            onClick={() => handleSubmit()}
+            className={cls.add_partner__button_submit}
+            type="submit"
+          >
+            Добавить
+          </button>
+          <button
+            onClick={handleButtonClose}
+            className={cls.add_partner__button_close}
+            type="button"
+          >
+            Закрыть
+          </button>
         </div>
-
       </form>
     </section>
-  )
-}
+  );
+};
 
 export default AddBayers;

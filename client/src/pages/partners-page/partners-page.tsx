@@ -8,19 +8,24 @@ import { Link } from 'react-router-dom';
 import { fetchPartnersList } from 'src/slicies/partners-list-slice/partners-list-slice';
 import { RootState } from  'src/store/store';
 import { IPartners } from 'src/app/app-types';
-import { FetchStatus } from 'src/app/app-constans';
+import { FetchStatus, PartnerRoles } from 'src/app/app-constans';
 import { fetchNewPartners } from 'src/slicies/new-partners-slice/new-partners-slice';
 import { AddPartner } from 'src/features/add-partner';
+import PartnersList from 'src/features/partners-list/ui/partners-list';
 
 
 const PartnersPage = () => {
 
   const [code, setCode] = useState('');
   const dispatch = useDispatch<AppDispatch>();
+  // const fetchStatusPartner = FetchStatus.Succeeded;
   const fetchStatusPartner = useSelector((state : RootState) => state.newPartner.fetchStatus);
   const partner = useSelector((state : RootState) => state.newPartner.partners);
   const partnersList: IPartners[] = useSelector((state: RootState) => state.partnersList.partners);
   const fetchStatusList = useSelector((state: RootState) => state.partnersList.fetchStatus);
+  const bayersList = partnersList.filter((partner : IPartners) => partner.roles === PartnerRoles.Bayers);
+  const suppliersList = partnersList.filter((partner : IPartners) => partner.roles === PartnerRoles.Suppliers);
+
   const handleAddButton = () => {
     dispatch(fetchNewPartners(code));
     setCode('');
@@ -53,7 +58,7 @@ const PartnersPage = () => {
           <img className={cls.partners_page__header_item_icon} src="/content/svg/icon-bayers.svg" alt="Все покупатели" />
           <div className={cls.partners_page__header_item_content}>
               <h3>Все покупатели</h3>
-              <span>0</span>
+              <span>{bayersList.length}</span>
             </div>
           </Link>
         </li>
@@ -62,7 +67,7 @@ const PartnersPage = () => {
           <img className={cls.partners_page__header_item_icon} src="/content/svg/icon-suppliers.svg" alt="Все поставщики" />
           <div className={cls.partners_page__header_item_content}>
             <h3>Все поставщики</h3>
-            <span>0</span>
+            <span>{suppliersList.length}</span>
           </div>
           </Link>
         </li>
@@ -86,34 +91,7 @@ const PartnersPage = () => {
             <img src="/content/svg/icon-search.svg" alt="Кнопка найти" />
           </button>
         </fieldset>
-
-      <ul className={cls.partners_page__list_header}>
-        <li></li>
-        <li>Наименование</li>
-        <li>ИНН</li>
-        <li>Телефон</li>
-        <li>Контактное лицо</li>
-      </ul>
-
-      <ul className={cls.partners_page__list}>
-        { fetchStatusList === FetchStatus.Succeeded &&
-          partnersList.map((item) => (
-            <li key={item.inn} className={cls.partners_page__item}>
-              <span>i</span>
-              <span>{item.shortName}</span>
-              <span>{item.inn}</span>
-              <span>{item.phone ?? '-'}</span>
-              <span>{item.contacts ?? '-'}</span>
-              <Link className={cls.partners_page__item_button} to={AppRouter.Bayers}>
-                <img src="/content/svg/icon-edit.svg" alt="Редактировать" />
-              </Link>
-              <Link className={cls.partners_page__item_button} to={AppRouter.Bayers}>
-                <img src="/content/svg/icon-delete.svg" alt="Удалить" />
-              </Link>
-            </li>
-          ))
-        }
-      </ul>
+      <PartnersList fetchStatusList={fetchStatusList} partnersList={partnersList} />
       {fetchStatusPartner === FetchStatus.Succeeded && 
         <AddPartner newPartner={partner}/>
       }
