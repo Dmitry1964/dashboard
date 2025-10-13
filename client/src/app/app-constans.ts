@@ -54,7 +54,7 @@ export const partnersLink: NavbarLinksType = {
     },
     {
       title: "Поставщики",
-      href: '#'
+      href: AppRouter.Suppliers
     }
   ],
 };

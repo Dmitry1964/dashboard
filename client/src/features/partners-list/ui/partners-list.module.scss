@@ -14,13 +14,19 @@
   padding: 10px;
 
   display: grid;
-  grid-template-columns: 20px repeat(4, 1fr) 40px 40px;
+  grid-template-columns: 40px repeat(4, 1fr) 40px 40px;
   background-color: $color-black-russian;
+  align-items: center;
 
   & li {
     font-size: 1.2rem;
     color: $color-medium-orchid;
   }
+}
+
+.partners__header_icon {
+  width: 20px;
+  height: 20px;
 }
 
 .partners__title {
@@ -38,7 +44,7 @@
 
 .partners__item {
   display: grid;
-  grid-template-columns: 20px repeat(4, 1fr) 40px 40px;
+  grid-template-columns: 40px repeat(4, 1fr) 40px 40px;
   font-size: 1.2rem;
   padding: 15px 10px;
   background-color: $color-black-russian-80;

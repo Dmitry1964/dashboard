@@ -49,6 +49,7 @@ const AddBayers = ({ newPartner }: AddPartnerType) => {
     setFormData({ ...formData, inn: inn, shortName: shortName });
     fetchAddPartner(formData);
   };
+
   return (
     <section className={cls.add_partner}>
       <h2 className={cls.add_partner__title}>Новый покупатель</h2>

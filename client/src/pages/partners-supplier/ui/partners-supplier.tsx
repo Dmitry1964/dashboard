@@ -1,38 +1,24 @@
-// import { fetchNewPartners } from 'src/slicies/new-partners-slice/new-partners-slice';
-// import cls from './partners-supplier.module.scss';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { useState } from 'react';
-// import { AppDispatch, RootState } from 'src/store/store';
+import cls from "./partners-suppliers.module.scss";
+import {  useSelector } from "react-redux";
+import { RootState } from "src/store/store";
+import { PartnerRoles } from "src/app/app-constans";
+import PartnersList from "src/features/partners-list/ui/partners-list";
+import { IPartners } from "src/app/app-types";
 
 
-// const PartnersSupplier = () => {
+const PartnersSupplier = () => {
 
-//   const [code, setCode] = useState('');
-//   const dispatch = useDispatch<AppDispatch>();
-//   // const fetchStatus = useSelector((state : RootState) => state.newPartner.fetchStatus);
-//   // const partner = useSelector((state : RootState) => state.newPartner.partners);
-//   const handleAddButton = () => {
-//     dispatch(fetchNewPartners(code));
-//     setCode('');
-//   };
+  const partnersList: IPartners[] = useSelector((state: RootState) => state.partnersList.partners.filter((partner: IPartners) => partner.roles === PartnerRoles.Suppliers));
+  const fetchStatusList = useSelector((state: RootState) => state.partnersList.fetchStatus);
 
-//   return (
-//     <section className={cls.partners_supplier}>
-//       <div className={cls.partners_bayers__header}>
-//         <h2 className={cls.partners_bayers__title}>Покупатели</h2>
-//         <fieldset className={cls.partners_bayers__add}>
-//           <label htmlFor="inn-field">Добавить партнера</label>
-//           <input value={code} onChange={(e) => setCode(e.target.value)} id="inn-field" type="text" placeholder="ИНН" />
-//           <button
-//           onClick={handleAddButton}
-//            className={cls.partners_bayers__add_button}
-//            >
-//             <img src="/content/svg/icon-search.svg" alt="Кнопка найти" />
-//           </button>
-//         </fieldset>
-//       </div>
-//     </section>
-//   )
-// }
+  return (
+    <section className={cls.partners_supplier}>
+      <div className={cls.partners_supplier__header}>
+        <h2 className={cls.partners_supplier__title}>Поставщики</h2>
+        <PartnersList fetchStatusList={fetchStatusList} partnersList={partnersList} />
+      </div>
+    </section>
+  )
+}
 
-// export default PartnersSupplier;
+export default PartnersSupplier;

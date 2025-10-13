@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from 'src/store/store';
 import { changeLocation } from 'src/slicies/location-slice/location-slice';
 import { AppRouter } from 'src/app/app-routes';
-import { Link } from 'react-router-dom';
-import { fetchPartnersList } from 'src/slicies/partners-list-slice/partners-list-slice';
+import { Link} from 'react-router-dom';
+import { fetchPartnersList} from 'src/slicies/partners-list-slice/partners-list-slice';
 import { RootState } from  'src/store/store';
 import { IPartners } from 'src/app/app-types';
 import { FetchStatus, PartnerRoles } from 'src/app/app-constans';
@@ -18,7 +18,6 @@ const PartnersPage = () => {
 
   const [code, setCode] = useState('');
   const dispatch = useDispatch<AppDispatch>();
-  // const fetchStatusPartner = FetchStatus.Succeeded;
   const fetchStatusPartner = useSelector((state : RootState) => state.newPartner.fetchStatus);
   const partner = useSelector((state : RootState) => state.newPartner.partners);
   const partnersList: IPartners[] = useSelector((state: RootState) => state.partnersList.partners);
@@ -31,15 +30,13 @@ const PartnersPage = () => {
     setCode('');
   };
 
-
   useEffect(() => {
     const pathhName = window.location.pathname;
     dispatch(changeLocation(pathhName));
     if (fetchStatusList === FetchStatus.Idle) { 
       dispatch(fetchPartnersList());
-    }
+      }
   }, [dispatch, fetchStatusList])
-
 
   return (
     <section className={cls.partners_page}>
@@ -89,6 +86,12 @@ const PartnersPage = () => {
             className={cls.partners_page__add_button} 
            >
             <img src="/content/svg/icon-search.svg" alt="Кнопка найти" />
+          </button>
+          <button
+            onClick={() => dispatch(fetchPartnersList())}
+            className={cls.partners_page__add_button}
+          >
+            <img src="/content/img/icon-ref.png" alt="Кнопка найти" width={20} height={20} />
           </button>
         </fieldset>
       <PartnersList fetchStatusList={fetchStatusList} partnersList={partnersList} />

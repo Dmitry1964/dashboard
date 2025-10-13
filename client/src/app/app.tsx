@@ -7,6 +7,7 @@ import MainPage from "src/pages/main-page/ui/main-page";
 import UserRegisterPage from "src/pages/user-register-page/ui/user-register-page";
 import PartnersPage from "src/pages/partners-page/partners-page";
 import { PartnersBayers } from "src/pages/partners-bayers";
+import PartnersSupplier from "src/pages/partners-supplier/ui/partners-supplier";
 
 function App() {
 
@@ -38,6 +39,10 @@ function App() {
         {
           path: AppRouter.Bayers,
           element: <PartnersBayers/>
+        },
+        {
+          path: AppRouter.Suppliers,
+          element: <PartnersSupplier/>
         }
       ]
     }
