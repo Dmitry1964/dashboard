@@ -7,6 +7,8 @@ export enum AppRouter {
   Partners = '/partners',
   Bayers = '/partners/bayers',
   Suppliers = '/partners/suppliers',
+  EditPartner = '/partners/edit',
+  DeletePartner = '/partners/delete',
 }
 
 export enum FetchRoutes {

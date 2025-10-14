@@ -1,7 +1,7 @@
 import { FetchStatus, PartnerRoles } from 'src/app/app-constans';
 import cls from './partners-list.module.scss';
 import { IPartners } from 'src/app/app-types';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AppRouter } from 'src/app/app-routes';
 
 type PartnersListProps = {
@@ -10,6 +10,21 @@ type PartnersListProps = {
 }
 
 const PartnersList = ({ fetchStatusList, partnersList }: PartnersListProps) => {
+
+  const navigate = useNavigate();
+
+  const handleEditButton = ( e: React.MouseEvent<HTMLAnchorElement>, item: IPartners) => {
+    e.preventDefault();
+    const href = `${AppRouter.EditPartner}/${item.inn}`;
+    navigate(href)
+    console.log(item['id']);
+  }
+
+  const handleDeleteButton = ( e: React.MouseEvent<HTMLAnchorElement>, item: IPartners) => {
+    e.preventDefault();
+    console.log(item['id']);
+  }
+
   return (
     <div className={cls.partners}>
       <ul className={cls.partners__header}>
@@ -36,10 +51,10 @@ const PartnersList = ({ fetchStatusList, partnersList }: PartnersListProps) => {
               <span>{item.inn}</span>
               <span>{item.phone ?? '-'}</span>
               <span>{item.contacts ?? '-'}</span>
-              <Link className={cls.partners__item_button} to={AppRouter.Bayers}>
+              <Link onClick={(e) => handleEditButton(e, item)} className={cls.partners__item_button} to='#'>
                 <img src="/content/svg/icon-edit.svg" alt="Редактировать" />
               </Link>
-              <Link className={cls.partners__item_button} to={AppRouter.Bayers}>
+              <Link onClick={(e) => handleDeleteButton(e, item)} className={cls.partners__item_button} to='#'>
                 <img src="/content/svg/icon-delete.svg" alt="Удалить" />
               </Link>
             </li>

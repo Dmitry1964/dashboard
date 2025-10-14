@@ -8,6 +8,7 @@ import UserRegisterPage from "src/pages/user-register-page/ui/user-register-page
 import PartnersPage from "src/pages/partners-page/partners-page";
 import { PartnersBayers } from "src/pages/partners-bayers";
 import PartnersSupplier from "src/pages/partners-supplier/ui/partners-supplier";
+import { EditPartner } from "src/features/edit-partner";
 
 function App() {
 
@@ -43,7 +44,11 @@ function App() {
         {
           path: AppRouter.Suppliers,
           element: <PartnersSupplier/>
-        }
+        },
+        {
+          path: `${AppRouter.EditPartner}/:inn`,
+          element: <EditPartner/>
+        },
       ]
     }
   ])
