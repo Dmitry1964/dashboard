@@ -49,14 +49,13 @@ export const getPartners = async (req: Request, res: Response, next: NextFunctio
     }
 }
 
-// Получить всех покупателей
+// Редактировать карточку партнера
 
-export const getBayers = async (req: Request, res: Response, next: NextFunction) : Promise<void> => {
+export const editPartner = async (req: Request, res: Response, next: NextFunction) : Promise<void> => {
     try {
-        const bayers = await Partner.find({roles: 'Покупатели'});
-        res.status(200).json(bayers);
-    }
-    catch (error) {
-        next(error)
+        const {shortName, inn, phone, contacts, roles} = req.body;
+        
+    } catch (error) {
+        
     }
 }

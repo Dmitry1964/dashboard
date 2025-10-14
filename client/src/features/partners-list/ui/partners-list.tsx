@@ -3,6 +3,7 @@ import cls from './partners-list.module.scss';
 import { IPartners } from 'src/app/app-types';
 import { Link, useNavigate } from 'react-router-dom';
 import { AppRouter } from 'src/app/app-routes';
+import { useCallback } from 'react';
 
 type PartnersListProps = {
   fetchStatusList?: FetchStatus;
@@ -13,12 +14,11 @@ const PartnersList = ({ fetchStatusList, partnersList }: PartnersListProps) => {
 
   const navigate = useNavigate();
 
-  const handleEditButton = ( e: React.MouseEvent<HTMLAnchorElement>, item: IPartners) => {
+  const handleEditButton = useCallback((e: React.MouseEvent<HTMLAnchorElement>, item: IPartners) => {
     e.preventDefault();
     const href = `${AppRouter.EditPartner}/${item.inn}`;
-    navigate(href)
-    console.log(item['id']);
-  }
+    navigate(href);
+  }, [navigate])
 
   const handleDeleteButton = ( e: React.MouseEvent<HTMLAnchorElement>, item: IPartners) => {
     e.preventDefault();

@@ -1,15 +1,23 @@
 import { PartnerRoles } from 'src/app/app-constans';
 import cls from './edit-partner.module.scss';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from 'src/store/store';
+import { AppRouter } from 'src/app/app-routes';
+import { useCallback } from 'react';
 
 
 const EditPartner = () => {
 
   const {inn} = useParams();
+  const navigate = useNavigate();
 
-  const partner = useSelector((state : RootState) => state.partnersList.partners.find((item) => item.inn === inn))
+  const partner = useSelector((state : RootState) => state.partnersList.partners.find((item) => item.inn === inn));
+
+  const handleButtonClose = useCallback(() => {
+    navigate(AppRouter.Partners)
+  }, [navigate])
+
   
     return (
       <section className={cls.edit_partner}>
@@ -123,7 +131,7 @@ const EditPartner = () => {
             Изменить
           </button>
           <button
-            // onClick={handleButtonClose}
+            onClick={handleButtonClose}
             className={cls.edit_partner__button_close}
             type="button"
           >
