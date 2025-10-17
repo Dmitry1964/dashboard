@@ -1,4 +1,4 @@
-import { getPartners, createPartners } from "../controllers/partnerController";
+import { getPartners, createPartners, editPartner } from "../controllers/partnerController";
 import { Router } from "express";
 
 
@@ -15,5 +15,9 @@ router.get('/', getPartners);
 
 // Получить всех покупателей GET /api/partners/bayers
 // router.get('/bayers', getBayers);
+
+// Изменить данные партнера
+
+router.post('/edit', editPartner);
 
 export default router;

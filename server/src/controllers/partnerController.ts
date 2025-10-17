@@ -1,3 +1,4 @@
+import { log } from 'console';
 import Partner from '../models/Partner';
 import {Request, Response, NextFunction} from 'express';
 
@@ -44,7 +45,7 @@ export const getPartners = async (req: Request, res: Response, next: NextFunctio
         const partners = await Partner.find();
         res.status(200).json(partners);
 
-    } catch (error) {
+    } catch (error) { 
         next(error)
     }
 }
@@ -52,10 +53,22 @@ export const getPartners = async (req: Request, res: Response, next: NextFunctio
 // Редактировать карточку партнера
 
 export const editPartner = async (req: Request, res: Response, next: NextFunction) : Promise<void> => {
-    try {
+    try { 
         const {shortName, inn, phone, contacts, roles} = req.body;
+        const partner = await Partner.findOne({inn});
+        if (partner) {
+            partner.phone = phone;
+            partner.contacts = contacts;
+            partner.roles = roles;
+
+            await partner.save();
+            res.status(200).json(partner);
+        } else {
+            console.log('Такого партнера нет')
+        }
+        
         
     } catch (error) {
-        
+        next(error);
     }
 }
